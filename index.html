@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A no-API-key travel planner starter." />
+  <title>Wayfinder Travel Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#explore" aria-label="Wayfinder home">✦</a>
+    <nav role="tablist" aria-label="Wayfinder sections">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="explore" id="explore-tab">Explore</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="plan" id="plan-tab">Plan a Trip</button>
+      <button class="tab gear" role="tab" aria-selected="false" aria-controls="settings" aria-label="Settings" id="settings-tab">⚙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="explore" class="panel active" role="tabpanel" aria-labelledby="explore-tab">
+      <div class="intro">
+        <p class="eyebrow">TRAVEL, MADE PERSONAL</p>
+        <h1>Where to next?</h1>
+        <p>Look up any city to see a considered mix of sights, food, neighborhoods, and walking routes—shaped around your budget and interests.</p>
+      </div>
+      <form id="explore-form" class="planner-card">
+        <div class="field wide"><label for="destination">Destination</label><input id="destination" required placeholder="Paris, Mexico City, Kyoto…" autocomplete="off" /></div>
+        <div class="field"><label for="explore-style">Travel style</label><select id="explore-style"><option>Budget backpacker</option><option selected>Comfortable mid-range</option><option>Treat ourselves</option><option>Luxury</option></select></div>
+        <fieldset class="interests"><legend>Interests</legend><div class="check-grid" id="explore-interests"></div></fieldset>
+        <button class="primary" type="submit">Explore <span>→</span></button>
+      </form>
+      <div id="explore-results" class="results" aria-live="polite"></div>
+    </section>
+
+    <section id="plan" class="panel" role="tabpanel" aria-labelledby="plan-tab" hidden>
+      <div class="intro"><p class="eyebrow">YOUR DAY-BY-DAY STARTER</p><h1>Your trip, day by day.</h1><p>Enter your dates and budget. You’ll get a clean, editable starter itinerary that groups nearby ideas, plans meals, and leaves room for a rainy-day backup.</p></div>
+      <form id="trip-form" class="planner-card trip-card">
+        <div class="field"><label for="trip-destination">Destination</label><input id="trip-destination" required placeholder="Where are you going?" /></div>
+        <div class="field"><label for="origin">Flying from</label><input id="origin" placeholder="Los Angeles or LAX" /></div>
+        <div class="field"><label for="start">Start date</label><input id="start" type="date" required /></div>
+        <div class="field"><label for="end">End date</label><input id="end" type="date" required /></div>
+        <div class="field"><label for="travelers">Travelers</label><input id="travelers" type="number" min="1" value="2" /></div>
+        <div class="field"><label for="budget">Total budget (USD)</label><input id="budget" type="number" min="0" placeholder="2500" /></div>
+        <div class="field"><label for="trip-style">Travel style</label><select id="trip-style"><option>Budget backpacker</option><option selected>Comfortable mid-range</option><option>Treat ourselves</option><option>Luxury</option></select></div>
+        <div class="field"><label for="pace">Pace</label><select id="pace"><option>Relaxed</option><option selected>Balanced</option><option>Packed: see everything</option></select></div>
+        <fieldset class="interests"><legend>Interests</legend><div class="check-grid" id="trip-interests"></div></fieldset>
+        <div class="field wide"><label for="lodging">Lodging preference</label><select id="lodging"><option>Hotel</option><option>Vacation rental / Airbnb</option><option>Hostel</option><option>Boutique / unique stays</option><option selected>No preference</option></select></div>
+        <div class="field wide"><label for="notes">Special requests</label><textarea id="notes" rows="3" placeholder="Birthday dinner on day 3, vegetarian, no red-eyes…"></textarea></div>
+        <p class="local-note">✦ Built locally in your browser. No API key, account, or live-price lookup.</p>
+        <button class="primary" type="submit">Build my itinerary <span>→</span></button>
+      </form>
+      <div id="itinerary" class="results" aria-live="polite"></div>
+    </section>
+
+    <section id="settings" class="panel" role="tabpanel" aria-labelledby="settings-tab" hidden>
+      <div class="intro settings-copy"><p class="eyebrow">HOW IT WORKS</p><h1>Settings</h1><p>Wayfinder is free and needs no account. Everything on this version runs locally in your browser.</p></div>
+      <div class="planner-card settings-card"><h2>No-key mode</h2><p>This editable starter does not send your searches, dates, preferences, or notes anywhere. The example results are generated in the browser so you can replace the data source or connect your own backend later.</p><hr><h3>Made to customize</h3><p>Update the wording, colors, destination cards, and itinerary logic directly in <code>dist/index.html</code>, <code>dist/styles.css</code>, and <code>dist/app.js</code>.</p></div>
+    </section>
+  </main>
+  <footer>Static travel-planning starter · No API keys, accounts, or external data requests.</footer>
+  <script src="app.js"></script>
+</body>
+</html>
